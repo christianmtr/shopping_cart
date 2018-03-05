@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'shopping',
-        'USERNAME': 'my_user',
+        'USER': 'my_user',
         'PASSWORD': 'ilovemyjob',
         'HOST': '127.0.0.1',
         'PORT': ''
@@ -123,7 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
