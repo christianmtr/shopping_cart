@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Lets go!</button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+</body>
+</html>

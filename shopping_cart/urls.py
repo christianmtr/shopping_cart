@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
+from cart.views import add_cart, login
+from product.views import show_products, one_product
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', show_products),
+    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}),
+    url(r'product/(?P<id>[0-9]+)/$', one_product),
+    url(r'add_cart/(?P<id>[0-9]+)/$', add_cart),
 ]

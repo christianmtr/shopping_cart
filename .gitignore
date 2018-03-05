@@ -288,3 +288,6 @@ Sera borrado assets/
 Sera borrado media/
 Sera borrado static/
 Sera borrado templates/
+
+media/*
+static/*
