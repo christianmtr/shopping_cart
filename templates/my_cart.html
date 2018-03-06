@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    My cart
+{% endblock %}
+{% block body %}
+    {% for product in products %}
+        <div class="row align-items-center justify-content-center">
+            <div class="col-sm">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-sm-12"><img src="media/{{ product.photo }}" alt="{{ product.name }}"></div>
+                    <div class="col-sm">{{ product.name }}</div>
+                    <div class="col-sm">{{ product.short_description }}</div>
+                    <div class="col-sm">{{ product.price }}</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+    <div class="row align-items-center justify-content-center">
+        {% if products %}
+            <a href="{% url 'pay_it' %}" class="btn btn-primary">Pay it!</a>
+        {% else %}
+            <a href="/" class="btn btn-secondary">Back</a>
+        {% endif %}
+    </div>
+{% endblock %}

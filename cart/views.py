@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 
 # Create your views here.
 from cart.models import Cart
@@ -25,3 +23,29 @@ def add_cart(request, id):
         finally:
             cart.product.add(product)
             return redirect('/')
+
+
+@login_required(login_url='/login/')
+def my_cart(request):
+    cart, products = None, None
+    try:
+        cart = Cart.objects.get(user=request.user, is_finished=False)
+    except Cart.DoesNotExist:
+        print("Cart empty")
+    else:
+        products = cart.product.all()
+    finally:
+        return render(request, 'my_cart.html', {'cart': cart, 'products': products})
+
+
+@login_required(login_url='/login/')
+def pay_cart(request):
+    try:
+        cart = Cart.objects.get(user=request.user, is_finished=False)
+    except Cart.DoesNotExist:
+        redirect("/")
+    else:
+        cart.is_finished = True
+        cart.save()
+    finally:
+        return redirect("/")

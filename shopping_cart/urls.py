@@ -17,13 +17,16 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from cart.views import add_cart, login
+from cart.views import add_cart, my_cart, pay_cart
 from product.views import show_products, one_product
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', show_products),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'product/(?P<id>[0-9]+)/$', one_product),
     url(r'add_cart/(?P<id>[0-9]+)/$', add_cart),
+    url(r'my_cart/$', my_cart, name='my_cart'),
+    url(r'pay/$', pay_cart, name='pay_it'),
 ]
