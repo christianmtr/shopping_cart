@@ -1,4 +1,4 @@
 # Shopping cart
 A shopping cart example.
 
-Made by **christianmtr** with :heart:.
+Made with Django and Postgresql by **christianmtr** with :heart:.
